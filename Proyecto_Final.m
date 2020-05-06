@@ -10,12 +10,12 @@ vout_min = slope_min*temp+offset; % y = 10mV*T + 0;
 vout_typ = slope_typ*temp+offset; % y = 10mV*T + 0;
 vout_max = slope_max*temp+offset; % y = 10mV*T + 0;
 % Frequency Response
-sensor = tf([1.22963],[1 1.22963]);
+sensor = tf([0.0204937],[1 0.0204937]);
 display(sensor);
 fprintf("bandwidth = [0, %.2f] rad/s = [0, %.2f] Hz\n ", bandwidth(sensor),bandwidth(sensor)/(2*pi));
 
-time = 0:0.1:8;
-y_termal = 1-0.8*exp(-1.22963*time);
+time = 0:0.1:480;
+y_termal = 1-0.8*exp(-0.0204937*time);
 figure;
 subplot(3,1,1);
 plot(temp,vout_typ,'-r');
@@ -31,12 +31,13 @@ grid on;
 xlim([20 50]);
 subplot(3,1,2);
 plot(time,y_termal,'--r');
-title('Respuesta al Escalón');
+
+title('Respuesta al escalón');
 xlabel('Tiempo (segundos)');
 ylabel('Amplitud');
 
 subplot(3,1,3);
-impulse(sensor);
+step(sensor);
 
 
 
