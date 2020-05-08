@@ -12,7 +12,7 @@ vout_max = slope_max*temp+offset; % y = 10mV*T + 0;
 % Frequency Response
 sensor = tf([0.0204937],[1 0.0204937]);
 display(sensor);
-fprintf("bandwidth = [0, %.2f] rad/s = [0, %.2f] Hz\n ", bandwidth(sensor),bandwidth(sensor)/(2*pi));
+fprintf("bandwidth = [0, %.2f] rad/s = [0, %.4f] Hz\n ", bandwidth(sensor),bandwidth(sensor)/(2*pi));
 
 time = 0:0.1:480;
 y_termal = 1-0.8*exp(-0.0204937*time);
@@ -37,7 +37,7 @@ xlabel('Tiempo (segundos)');
 ylabel('Amplitud');
 
 subplot(3,1,3);
-step(sensor);
+bodemag(sensor);
 
 %% Caudalímetro
 figure;
@@ -66,3 +66,4 @@ grid on;
 
 subplot(3,1,3);
 step(sensor2);
+ylim([0.10 0.14]);
