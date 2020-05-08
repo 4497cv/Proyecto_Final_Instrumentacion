@@ -39,6 +39,30 @@ ylabel('Amplitud');
 subplot(3,1,3);
 step(sensor);
 
+%% Caudalímetro
+figure;
+Vout = 0:1:10;
+Q = -0.2789*(Vout.^4)+7.9169*(Vout.^3)-68.083*(Vout.^2)+457.79*Vout;
+
+Kc = 0.13565823;
+sensor2 = tf([Kc],[1]);
+
+subplot(3,1,1);
+plot(Vout,Q,'--r');
+title('Relación entre el caudal y tensión del caudalimetro');
+xlabel('Vc(v)');
+ylabel('Q (cm^3/min)');
+grid on;
+
+Q = [1.33:0.01:2.0];
+Vc = 0.13565823*Q;
+subplot(3,1,2);
+plot(Q,Vc,'-r');
+title('Relación entre el caudal y tensión del caudalimetro');
+ylabel('Vc(v)');
+xlabel('Q (cm^3/seg)');
+grid on;
 
 
-
+subplot(3,1,3);
+step(sensor2);
