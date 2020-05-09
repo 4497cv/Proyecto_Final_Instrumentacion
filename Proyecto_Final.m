@@ -37,7 +37,7 @@ xlabel('Tiempo (segundos)');
 ylabel('Amplitud');
 
 subplot(3,1,3);
-bodemag(sensor);
+step(sensor);
 
 %% Caudalímetro
 figure;
@@ -67,3 +67,32 @@ grid on;
 subplot(3,1,3);
 step(sensor2);
 ylim([0.10 0.14]);
+
+%% Moisture Sensor
+resolution = 0:1:255;
+c1 = -2.0468;
+c2 = 0.5872;
+c3 = -4.0845e-4;
+Vout = c1+(c2*resolution)+c3*(resolution.^2);
+sensor3 = tf([0.124282],[1 0.124282]);
+figure;
+subplot(3,1,1);
+plot(resolution,Vout,'--r');
+ylim([0 100]);
+title('Gráfica de Humedad Relativa');
+xlabel('Lectura del sensor(8-bit)');
+ylabel('Humedad relativa (%RH)');
+subplot(3,1,2);
+RH = 0:1:100;
+sensor_val = 1.98*RH;
+plot(RH,sensor_val,'-r');
+title('Gráfica de Humedad Relativa');
+ylabel('Sensor val');
+xlabel('Humedad relativa (%RH)');
+
+subplot(3,1,3);
+bodemag(sensor3);
+fprintf("bandwidth = [0, %.2f] rad/s = [0, %.4f] Hz\n ", bandwidth(sensor3),bandwidth(sensor3)/(2*pi));
+
+Vout = c1+(c2*resolution)+c3*(resolution.^2);
+
