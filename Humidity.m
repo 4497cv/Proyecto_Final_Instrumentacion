@@ -32,6 +32,7 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
+movegui(hObject, 'center');
 
 global t_global  hum_global  
 

@@ -31,6 +31,8 @@ function settings_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
+movegui(hObject, 'center');
+
 set(handles.pushbutton7,'Enable','off');
 set(handles.sim_text,'Visible','off');
 set(handles.sim_done_text,'Visible','off');
