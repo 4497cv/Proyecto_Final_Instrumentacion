@@ -27,6 +27,7 @@ function Main_Screen_OpeningFcn(hObject, eventdata, handles, varargin)
 
 % Choose default command line output for Main_Screen
 global sim_temp sim_hum sim_wf sim_vpd
+
 handles.output = hObject;
 
 % Update handles structure
@@ -35,6 +36,8 @@ guidata(hObject, handles);
 set(handles.figure1,'Color', [1 1 1]);
 set(handles.text2,'BackgroundColor',[1 1 1]);
 set(handles.uibuttongroup2,'BackgroundColor',[1 1 1]);
+
+%tomato_icon = imread('C:\GIT\Proyecto_Final_Instrumentacion\img\tomato.png');
 
 %set(handles.uibuttongroup2,'ShadowColor',[0 0.4470 0.7410]);
 if(sim_temp == 1)
@@ -139,3 +142,14 @@ function pushbutton13_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 close(Main_Screen);
 VPD;
+
+
+% --- Executes when user attempts to close figure1.
+function figure1_CloseRequestFcn(hObject, eventdata, handles)
+% hObject    handle to figure1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: delete(hObject) closes the figure
+delete(hObject);
+clear all;

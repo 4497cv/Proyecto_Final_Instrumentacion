@@ -36,11 +36,11 @@ guidata(hObject, handles);
 global  t_global wf_global
 
 axes(handles.axes1);
-plot(t_global, wf_global,'r');
+plot(t_global, wf_global,'-b');
 xlabel('Tiempo (segundos)');
-ylabel('Temperatura');
-title('Gráfica de Temperatura');
-
+ylabel('Caudal de Agua (cm^3/s)');
+title('Gráfica de Caudal de Agua');
+ylim([0 1]);
 % UIWAIT makes WaterFlow wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
