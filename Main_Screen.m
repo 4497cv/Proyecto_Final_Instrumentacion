@@ -39,7 +39,7 @@ set(handles.figure1,'Color', [1 1 1]);
 set(handles.text2,'BackgroundColor',[1 1 1]);
 set(handles.uibuttongroup2,'BackgroundColor',[1 1 1]);
 
-tomato_icon = imread('C:\GIT\Proyecto_Final_Instrumentacion\img\tomate.jpg');
+tomato_icon = imread(pwd+"\img\tomate.jpg");
 set(handles.uipanellogo,'BackgroundColor',[1 1 1]);
 imgaxes = axes('parent', handles.uipanellogo);
 load mandrill;

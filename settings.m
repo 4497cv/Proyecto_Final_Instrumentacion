@@ -37,7 +37,7 @@ set(handles.pushbutton7,'Enable','off');
 set(handles.sim_text,'Visible','off');
 set(handles.sim_done_text,'Visible','off');
 
-config_icon = imread('C:\GIT\Proyecto_Final_Instrumentacion\img\tuerca.jpg');
+config_icon = imread(pwd+"\img\tuerca.jpg");
 %set(handles.ui_iconpanel,'BackgroundColor',[1 1 1]);
 imgaxes = axes('parent', handles.ui_iconpanel);
 image(config_icon);
