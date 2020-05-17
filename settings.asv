@@ -35,11 +35,10 @@ set(handles.pushbutton7,'Enable','off');
 set(handles.sim_text,'Visible','off');
 set(handles.sim_done_text,'Visible','off');
 
-textblocker1_Callback(@settings_OpeningFcn, eventdata, handles);
-%temp_settings_Callback(@settings_OpeningFcn, eventdata, handles);
-% rh_settings_Callback(@settings_OpeningFcn, eventdata, handles);
-% wf_settings_Callback(@settings_OpeningFcn, eventdata, handles);
-% tf_settings_Callback(@settings_OpeningFcn, eventdata, handles);
+temp_settings_Callback(hObject, eventdata, handles)
+rh_settings_Callback(@settings_OpeningFcn, eventdata, handles)
+wf_settings_Callback(@settings_OpeningFcn, eventdata, handles)
+tf_settings_Callback(@settings_OpeningFcn, eventdata, handles);
 
 %set(handles.figure1,'Color',	[0 0 0]);
 %set(handles.uipanel4,'BackgroundColor',[0 0.4470 0.7410]);
@@ -108,7 +107,6 @@ if((temp_final >= 2) && (temp_final <= 150))
     sim_temp = 1;
     fprintf("valid temperature value: %i\n", temp_final);
     set(handles.temp_settings,'ForegroundColor',[0 0.4470 0.7410]);
-    textblocker2_Callback(@temp_settings_Callback, eventdata, handles);
 else
     sim_temp = 0;
     set(handles.temp_settings,'ForegroundColor',[0.6350 0.0780 0.1840]);
@@ -141,7 +139,6 @@ if((hum_final >= 0) && (hum_final <= 100))
     fprintf("valid rh value: %i\n", hum_final);
     sim_hum = 1;
     set(handles.rh_settings,'ForegroundColor',[0 0.4470 0.7410]);
-    textblocker3_Callback(@rh_settings_Callback, eventdata, handles);
 else
     sim_hum = 0;
     set(handles.rh_settings,'ForegroundColor',[0.6350 0.0780 0.1840]);
@@ -161,6 +158,7 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
+
 function wf_settings_Callback(hObject, eventdata, handles)
 % hObject    handle to wf_settings (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -174,12 +172,10 @@ if((wf_final >= 1.3) && (wf_final <= 2))
     fprintf("valid wf value: %i\n", wf_final);
     sim_wf = 1;
     set(handles.wf_settings,'ForegroundColor',[0 0.4470 0.7410]);
-    textblocker4_Callback(@wf_settings_Callback, eventdata, handles);
 else
     sim_wf = 0;
     set(handles.wf_settings,'ForegroundColor',[0.6350 0.0780 0.1840]);
 end
-
 % --- Executes during object creation, after setting all properties.
 function wf_settings_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to wf_settings (see GCBO)
@@ -191,6 +187,8 @@ function wf_settings_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
 
 function tf_settings_Callback(hObject, eventdata, handles)
 % hObject    handle to tf_settings (see GCBO)
@@ -220,23 +218,3 @@ function tf_settings_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
-
-function textblocker1_Callback(hObject, eventdata, handles)
-    set(handles.rh_settings,'Enable', 'Off');
-    set(handles.wf_settings,'Enable', 'Off');
-    set(handles.tf_settings,'Enable', 'Off');
- 
- function textblocker2_Callback(hObject, eventdata, handles)
-     set(handles.rh_settings,'Enable', 'On');
-     set(handles.wf_settings,'Enable', 'Off');
-     set(handles.tf_settings,'Enable', 'Off');
-     
- function textblocker3_Callback(hObject, eventdata, handles)
-     set(handles.rh_settings,'Enable', 'On');
-     set(handles.wf_settings,'Enable', 'On');
-     set(handles.tf_settings,'Enable', 'Off');
-     
- function textblocker4_Callback(hObject, eventdata, handles)
-     set(handles.rh_settings,'Enable', 'On');
-     set(handles.wf_settings,'Enable', 'On');
-     set(handles.tf_settings,'Enable', 'On');

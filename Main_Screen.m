@@ -26,14 +26,40 @@ function Main_Screen_OpeningFcn(hObject, eventdata, handles, varargin)
 % varargin   command line arguments to Main_Screen (see VARARGIN)
 
 % Choose default command line output for Main_Screen
+global sim_temp sim_hum sim_wf sim_vpd
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
-set(handles.pushbutton1,'Enable','on');
-set(handles.pushbutton2,'Enable','on');
-set(handles.pushbutton3,'Enable','on');
 
+set(handles.figure1,'Color', [1 1 1]);
+set(handles.text2,'BackgroundColor',[1 1 1]);
+set(handles.uibuttongroup2,'BackgroundColor',[1 1 1]);
+
+%set(handles.uibuttongroup2,'ShadowColor',[0 0.4470 0.7410]);
+if(sim_temp == 1)
+    set(handles.pushbutton1,'Enable','on');
+else 
+    set(handles.pushbutton1,'Enable','off');
+end
+
+if(sim_hum == 1)
+    set(handles.pushbutton2,'Enable','on');
+else 
+    set(handles.pushbutton2,'Enable','off');
+end
+
+if(sim_wf == 1)
+    set(handles.pushbutton3,'Enable','on');
+else 
+    set(handles.pushbutton3,'Enable','off');
+end
+
+if(sim_vpd == 1)
+    set(handles.pushbutton13,'Enable','on');
+else 
+    set(handles.pushbutton13,'Enable','off');
+end
 % UIWAIT makes Main_Screen wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
@@ -73,7 +99,7 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 set(Main_Screen,'visible','off');
-
+WaterFlow;
 
 % --- Executes on button press in pushbutton4.
 function pushbutton4_Callback(hObject, eventdata, handles)
@@ -81,7 +107,8 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 %close(Main_Screen);
-set(Main_Screen,'visible','off');
+%set(Main_Screen,'visible','off');
+close(Main_Screen);
 settings;
 
 function edit1_Callback(hObject, eventdata, handles)
@@ -92,7 +119,6 @@ function edit1_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of edit1 as text
 %        str2double(get(hObject,'String')) returns contents of edit1 as a double
 
-
 % --- Executes during object creathide()ion, after setting all properties.
 function edit1_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)
@@ -102,5 +128,14 @@ function edit1_CreateFcn(hObject, eventdata, handles)
 % Hint: edit controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
+    set(hObject,'BackgroundColor','white'); 
 end
+
+
+% --- Executes on button press in pushbutton13.
+function pushbutton13_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton13 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+close(Main_Screen);
+VPD;

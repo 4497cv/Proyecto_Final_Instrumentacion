@@ -1,10 +1,10 @@
-function varargout = Humidity(varargin)
+function varargout = VPD(varargin)
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @Humidity_OpeningFcn, ...
-                   'gui_OutputFcn',  @Humidity_OutputFcn, ...
+                   'gui_OpeningFcn', @VPD_OpeningFcn, ...
+                   'gui_OutputFcn',  @VPD_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -19,34 +19,34 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before Humidity is made visible.
-function Humidity_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before VPD is made visible.
+function VPD_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to Humidity (see VARARGIN)
+% varargin   command line arguments to VPD (see VARARGIN)
 
-% Choose default command line output for Humidity
+% Choose default command line output for VPD
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
 
-global t_global  hum_global  
+global t_global vpd_global
 
 axes(handles.axes1);
-plot(t_global, hum_global,'r');
+plot(t_global, vpd_global,'r');
 xlabel('Tiempo (segundos)');
-ylabel('Humedad del Aire (%RH)');
-title('Gráfica de la humedad del aire');
+ylabel('VPD');
+title('Gráfica de Deficit de Presión de Vapor');
 
-% UIWAIT makes Humidity wait for user response (see UIRESUME)
+% UIWAIT makes VPD wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = Humidity_OutputFcn(hObject, eventdata, handles) 
+function varargout = VPD_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -61,7 +61,7 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-close(Humidity);
+close(VPD);
 set(Main_Screen,'visible','on');
 
 % --- Executes on button press in pushbutton2.
