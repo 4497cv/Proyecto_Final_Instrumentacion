@@ -10,7 +10,7 @@ vout_min = slope_min*temp+offset; % y = 10mV*T + 0;
 vout_typ = slope_typ*temp+offset; % y = 10mV*T + 0;
 vout_max = slope_max*temp+offset; % y = 10mV*T + 0;
 % Frequency Response
-sensor = tf([0.0204937],[1 0.0204937]);
+sensor = tf([0.00204937],[1 0.0204937]);
 display(sensor);
 fprintf("bandwidth = [0, %.2f] rad/s = [0, %.4f] Hz\n ", bandwidth(sensor),bandwidth(sensor)/(2*pi));
 
