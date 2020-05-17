@@ -78,21 +78,22 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+close(Temperature);
+Main_Screen;
 
 % --- Executes on button press in pushbutton2.
 function pushbutton2_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global tfinal temp_final
-
+global tfinal temp_final hum_final
+hum_final = 0;
 tfinal = str2double(get(handles.tf,'string'));
 temp_final = str2double(get(handles.tempf,'string'));
 opt = simset('solver','ode4','srcWorkspace','Current');
 sim('PF_IE', [0 tfinal], opt);
 axes(handles.axes1);
-plot(t, temp);
+plot(t, temp,'r');
 xlabel('time');
 ylabel('temperature');
 title('Temperature Graph');
