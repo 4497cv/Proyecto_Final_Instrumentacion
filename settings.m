@@ -35,6 +35,13 @@ set(handles.pushbutton7,'Enable','off');
 set(handles.sim_text,'Visible','off');
 set(handles.sim_done_text,'Visible','off');
 
+config_icon = imread('C:\GIT\Proyecto_Final_Instrumentacion\img\tuerca.jpg');
+%set(handles.ui_iconpanel,'BackgroundColor',[1 1 1]);
+imgaxes = axes('parent', handles.ui_iconpanel);
+image(config_icon);
+axis off;
+axis image;
+
 textblocker1_Callback(@settings_OpeningFcn, eventdata, handles);
 %temp_settings_Callback(@settings_OpeningFcn, eventdata, handles);
 % rh_settings_Callback(@settings_OpeningFcn, eventdata, handles);

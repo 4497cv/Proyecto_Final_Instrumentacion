@@ -37,7 +37,20 @@ set(handles.figure1,'Color', [1 1 1]);
 set(handles.text2,'BackgroundColor',[1 1 1]);
 set(handles.uibuttongroup2,'BackgroundColor',[1 1 1]);
 
-%tomato_icon = imread('C:\GIT\Proyecto_Final_Instrumentacion\img\tomato.png');
+tomato_icon = imread('C:\GIT\Proyecto_Final_Instrumentacion\img\tomate.jpg');
+set(handles.uipanellogo,'BackgroundColor',[1 1 1]);
+imgaxes = axes('parent', handles.uipanellogo);
+load mandrill;
+image(tomato_icon);
+axis off;
+
+format shortg;
+[c tf] = clock;
+
+cdate = c(3)+"/"+c(2)+"/"+c(1);
+
+set(handles.text4,'String', cdate);
+set(handles.text4,'BackgroundColor', [1 1 1]);
 
 %set(handles.uibuttongroup2,'ShadowColor',[0 0.4470 0.7410]);
 if(sim_temp == 1)
@@ -140,7 +153,7 @@ function pushbutton13_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton13 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-close(Main_Screen);
+set(Main_Screen,'visible','off');
 VPD;
 
 

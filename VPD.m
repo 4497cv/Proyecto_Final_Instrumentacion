@@ -40,7 +40,6 @@ plot(t_global, vpd_global,'r');
 xlabel('Tiempo (segundos)');
 ylabel('VPD');
 title('Gráfica de Deficit de Presión de Vapor');
-
 % UIWAIT makes VPD wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
