@@ -22,7 +22,7 @@ function varargout = Temperature(varargin)
 
 % Edit the above text to modify the response to help Temperature
 
-% Last Modified by GUIDE v2.5 16-May-2020 18:03:48
+% Last Modified by GUIDE v2.5 16-May-2020 19:05:56
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -78,3 +78,65 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton2.
+function pushbutton2_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global tfinal temp_final
+
+tfinal = str2double(get(handles.tf,'string'));
+temp_final = str2double(get(handles.tempf,'string'));
+opt = simset('solver','ode4','srcWorkspace','Current');
+sim('PF_IE', [0 tfinal], opt);
+axes(handles.axes1);
+plot(t, temp);
+xlabel('time');
+ylabel('temperature');
+title('Temperature Graph');
+
+function tf_Callback(hObject, eventdata, handles)
+% hObject    handle to tf (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of tf as text
+%        str2double(get(hObject,'String')) returns contents of tf as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function tf_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to tf (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function tempf_Callback(hObject, eventdata, handles)
+% hObject    handle to tempf (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of tempf as text
+%        str2double(get(hObject,'String')) returns contents of tempf as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function tempf_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to tempf (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
