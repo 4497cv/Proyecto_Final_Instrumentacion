@@ -1,30 +1,4 @@
 function varargout = Main_Screen(varargin)
-% MAIN_SCREEN MATLAB code for Main_Screen.fig
-%      MAIN_SCREEN, by itself, creates a new MAIN_SCREEN or raises the existing
-%      singleton*.
-%
-%      H = MAIN_SCREEN returns the handle to a new MAIN_SCREEN or the handle to
-%      the existing singleton*.
-%
-%      MAIN_SCREEN('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in MAIN_SCREEN.M with the given input arguments.
-%
-%      MAIN_SCREEN('Property','Value',...) creates a new MAIN_SCREEN or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before Main_Screen_OpeningFcn gets called.  An
-%      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to Main_Screen_OpeningFcn via varargin.
-%
-%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
-%      instance to run (singleton)".
-%
-% See also: GUIDE, GUIDATA, GUIHANDLES
-
-% Edit the above text to modify the response to help Main_Screen
-
-% Last Modified by GUIDE v2.5 16-May-2020 18:01:23
-
-% Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
@@ -41,7 +15,6 @@ if nargout
 else
     gui_mainfcn(gui_State, varargin{:});
 end
-% End initialization code - DO NOT EDIT
 
 
 % --- Executes just before Main_Screen is made visible.
@@ -57,6 +30,9 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
+set(handles.pushbutton1,'Enable','on');
+set(handles.pushbutton2,'Enable','on');
+set(handles.pushbutton3,'Enable','on');
 
 % UIWAIT makes Main_Screen wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
@@ -78,7 +54,7 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-close(Main_Screen);
+set(Main_Screen,'visible','off');
 Temperature;
 
 
@@ -87,7 +63,7 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-close(Main_Screen);
+set(Main_Screen,'visible','off');
 Humidity;
 
 
@@ -96,6 +72,7 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+set(Main_Screen,'visible','off');
 
 
 % --- Executes on button press in pushbutton4.
@@ -103,9 +80,9 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-close(Main_Screen);
+%close(Main_Screen);
+set(Main_Screen,'visible','off');
 settings;
-
 
 function edit1_Callback(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)
@@ -116,7 +93,7 @@ function edit1_Callback(hObject, eventdata, handles)
 %        str2double(get(hObject,'String')) returns contents of edit1 as a double
 
 
-% --- Executes during object creation, after setting all properties.
+% --- Executes during object creathide()ion, after setting all properties.
 function edit1_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB

@@ -57,6 +57,15 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
+global tfinal temp_final hum_final wf_final
+
+opt = simset('solver','ode4','srcWorkspace','Current');
+sim('PF_IE', [0 tfinal], opt);
+axes(handles.axes1);
+plot(t, temp,'r');
+xlabel('time');
+ylabel('temperature');
+title('Temperature Graph');
 
 % UIWAIT makes Temperature wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
@@ -86,17 +95,10 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global tfinal temp_final hum_final
-hum_final = 0;
-tfinal = str2double(get(handles.tf,'string'));
-temp_final = str2double(get(handles.tempf,'string'));
-opt = simset('solver','ode4','srcWorkspace','Current');
-sim('PF_IE', [0 tfinal], opt);
-axes(handles.axes1);
-plot(t, temp,'r');
-xlabel('time');
-ylabel('temperature');
-title('Temperature Graph');
+
+%opt = simset('solver','ode4','srcWorkspace','Current');
+%sim('PF_IE', [0 tfinal], opt);
+%disp(y);
 
 function tf_Callback(hObject, eventdata, handles)
 % hObject    handle to tf (see GCBO)
