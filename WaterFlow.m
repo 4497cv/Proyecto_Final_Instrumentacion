@@ -42,6 +42,7 @@ xlabel('Tiempo (segundos)');
 ylabel('Caudal de Agua (cm^3/s)');
 title('Gráfica de Caudal de Agua');
 ylim([0 max(wf_global)+(max(wf_global)/8)]);
+zoom on;
 % UIWAIT makes WaterFlow wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 

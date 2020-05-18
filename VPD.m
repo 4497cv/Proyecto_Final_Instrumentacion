@@ -42,6 +42,7 @@ xlabel('Tiempo (segundos)');
 ylabel('VPD');
 title('Gráfica de Deficit de Presión de Vapor');
 ylim([min(vpd_global)-(min(vpd_global)/8), max(vpd_global)+(max(vpd_global)/12)]);
+zoom on;
 % UIWAIT makes VPD wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 

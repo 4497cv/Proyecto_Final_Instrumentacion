@@ -43,10 +43,10 @@ imgaxes = axes('parent', handles.ui_iconpanel);
 image(config_icon);
 axis off;
 axis image;
-set(handles.uipanel_step,'visible','off');
-set(handles.uipanel_vect,'visible','on')
-set(handles.vect_button,'Value',1);
-set(handles.step_button,'Value',0);
+set(handles.uipanel_step,'visible','on');
+set(handles.uipanel_vect,'visible','off')
+set(handles.vect_button,'Value',0);
+set(handles.step_button,'Value',1);
 set(handles.temp0_edit, 'String', '33');
 set(handles.temp1_edit, 'String', '34');
 set(handles.temp2_edit, 'String', '35');
@@ -111,10 +111,9 @@ if(step_button_st == 1)
     rh_values = [0, hum_final, hum_final, hum_final, hum_final];
     
     set(handles.sim_text,'Visible','on');
-    opt = simset('solver','ode4','srcWorkspace','Current');
+    opt = simset('solver','ode8','srcWorkspace','Current');
     sim('PF_IE_1705', [0 tfinal], opt);
     
-        
     t_global = t;
     temp_global = temp;
     hum_global = hum;

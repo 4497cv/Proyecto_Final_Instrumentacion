@@ -42,7 +42,7 @@ xlabel('Tiempo (segundos)');
 ylabel('Humedad del Aire (%RH)');
 title('Gráfica de la humedad del aire');
 ylim([0 max(hum_global)+(max(hum_global)/8)]);
-
+zoom on;
 
 % UIWAIT makes Humidity wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
