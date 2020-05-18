@@ -32,6 +32,7 @@ handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
 movegui(hObject, 'center');
+global step_button_st vect_button_st
 
 set(handles.pushbutton7,'Enable','off');
 set(handles.sim_text,'Visible','off');
@@ -47,6 +48,8 @@ set(handles.uipanel_step,'visible','on');
 set(handles.uipanel_vect,'visible','off')
 set(handles.vect_button,'Value',0);
 set(handles.step_button,'Value',1);
+step_button_st = 1;
+vect_button_st = 0;
 set(handles.temp0_edit, 'String', '33');
 set(handles.temp1_edit, 'String', '34');
 set(handles.temp2_edit, 'String', '35');
@@ -59,6 +62,7 @@ set(handles.wf0_edit, 'String', '1.5');
 set(handles.wf1_edit, 'String', '1.5');
 set(handles.wf2_edit, 'String', '1.5');
 set(handles.wf3_edit, 'String', '1.5');
+
 
 
 textblocker1_Callback(@settings_OpeningFcn, eventdata, handles);
@@ -101,13 +105,13 @@ if(step_button_st == 1)
     wf_final =  str2double(get(handles.wf_settings,'string'));
     tfinal = str2double(get(handles.tf_settings,'string'));
     
-    temp_tstamp = [0 14 28 42 84];
+    temp_tstamp = [0 2 4 6 8];
     temp_values = [0, temp_final, temp_final, temp_final, temp_final];
 
-    wf_tstamp = [0 14 28 42 84];
+    wf_tstamp = [0 2 4 6 10];
     wf_values = [0, wf_final, wf_final, wf_final, wf_final];
 
-    rh_tstamp = [0 14 20 42 84];
+    rh_tstamp = [0 2 4 6 10];
     rh_values = [0, hum_final, hum_final, hum_final, hum_final];
     
     set(handles.sim_text,'Visible','on');
