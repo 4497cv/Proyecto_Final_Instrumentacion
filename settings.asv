@@ -55,10 +55,10 @@ set(handles.rh0_edit, 'String', '70');
 set(handles.rh1_edit, 'String', '67');
 set(handles.rh2_edit, 'String', '63');
 set(handles.rh3_edit, 'String', '58');
-set(handles.wf0_edit, 'String', '1.5');
-set(handles.wf1_edit, 'String', '1.5');
-set(handles.wf2_edit, 'String', '1.5');
-set(handles.wf3_edit, 'String', '1.5');
+set(handles.wf0_edit, 'String', '1.33');
+set(handles.wf1_edit, 'String', '1.33');
+set(handles.wf2_edit, 'String', '1.33');
+set(handles.wf3_edit, 'String', '58');
 
 
 textblocker1_Callback(@settings_OpeningFcn, eventdata, handles);
@@ -122,9 +122,8 @@ if(step_button_st == 1)
     vpd_global = vpd;
     sim_vpd = 1;
 
-end
-
-if(vect_button_st == 1)
+elseif(vect_button_st == 1)
+    tfinal = str2double(get(handles.tf_total,'string'));
     temp0 = str2double(get(handles.temp0_edit,'string'));
     temp1 = str2double(get(handles.temp1_edit,'string'));
     temp2 =  str2double(get(handles.temp2_edit,'string'));
@@ -140,6 +139,7 @@ if(vect_button_st == 1)
     wf2 =  str2double(get(handles.wf2_edit,'string'));
     wf3 = str2double(get(handles.wf3_edit,'string'));
 
+    
     temp_tstamp = [0 14 28 42 84];
     temp_values = [0, temp0, temp1, temp2, temp3];
 
@@ -149,13 +149,9 @@ if(vect_button_st == 1)
     rh_tstamp = [0 14 20 42 84];
     rh_values = [0, wf0, wf1, wf2, wf3];
     
-    tfinal = str2double(get(handles.tf_total,'string'));
-     
     set(handles.sim_text,'Visible','on');
-    
     opt = simset('solver','ode4','srcWorkspace','Current');
-   
-    sim('PF_IE_1705', [0 tfinal*60], opt);
+    sim('PF_IE_1705', [0 tfinal], opt);
     
     t_global = t;
     temp_global = temp;
@@ -416,7 +412,6 @@ else
     set(handles.tf_total,'ForegroundColor',[0.6350 0.0780 0.1840]);
 end
 tfinal = tfinal*60; %segundos
-tfinal
 
 % --- Executes during object creation, after setting all properties.
 function tf_total_CreateFcn(hObject, eventdata, handles)
