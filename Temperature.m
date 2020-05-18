@@ -42,8 +42,9 @@ xlabel('Tiempo (segundos)');
 ylabel('Temperatura');
 title('Gráfica de Temperatura');
 zoom on;
-%ylim([0 max(temp_global)+(max(temp_global)/8)]);
-
+if(temp_global ~= 0)
+ylim([0 max(temp_global)+(max(temp_global)/8)]);
+end
 % UIWAIT makes Temperature wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
